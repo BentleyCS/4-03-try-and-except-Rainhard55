@@ -3,6 +3,15 @@
 
 
 def sum(arr : list) -> int:
+    total = 0
+
+    for item in arr:
+        try:
+            total += item
+        except TypeError:
+            continue
+    return total
+
     """
     Modify the function such that it returns the sum of all numebrs within the given list.
     :param arr:
@@ -11,6 +20,17 @@ def sum(arr : list) -> int:
     pass
 
 def cleanData(rawData : list) ->list:
+
+    clean = []
+    for item in rawData:
+        try:
+            float(item)
+            clean.append(item)
+        except ValueError:
+            continue
+
+    return clean
+
     """
     modify the function such that it takes in a list as an argument will return a new list that
      contains only the valeus that can be typecast to a float.
@@ -19,6 +39,14 @@ def cleanData(rawData : list) ->list:
     """
     pass
 def unreliableCalculator(divisors : list) -> list:
+    results = []
+    for item in divisors:
+        try:
+            results.append(float(item) / float(item))
+        except ZeroDivisionError:
+            results.append(0)
+    return results
+
     """
     Modify the function such that it takes in a list as an argument and returns a new list where each
     index is 100 divided by the values from the input list.
@@ -31,20 +59,37 @@ def unreliableCalculator(divisors : list) -> list:
 
 
 def upperAll(arr : list) -> None:
-    """
+    try:
+        for i in range(len(arr)):
+            if isntance(arr[i],str):
+                arr[i] = arr[i].upper()
+
+    except TypeError:
+        print("wrong input")
+
+    pass
+
+
+
+"""
     Modiy the function such that is uppercases all strings within the given argument list.
     The string method .upper() turns all characters in as tirng uppercase.
     You should mpdify the original list not return a new list.
     :param arr:
     :return:
     """
-    x = "hello"
-    print(x)
-    x = x.upper()
-    print(x)
+
 
 
 def firstItems(arr : list) -> list:
+    result = []
+    for item in arr:
+        try:
+            result.append(int(item[0]))
+        except:
+            result.append(item)
+    return result
+
     """
     Modify the function below such that given a list of values. Many of the list elements will be lists
     themselves. For any list element that is a list grab the first element from that list. If the list
